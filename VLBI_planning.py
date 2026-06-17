@@ -1,3 +1,15 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "vlbiplanobs",
+#     "marimo",
+#     "numpy",
+#     "matplotlib",
+#     "astropy" 
+# ]
+# ///
+
+
 import marimo
 
 __generated_with = "0.23.8"

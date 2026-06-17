@@ -17,8 +17,18 @@ def _():
     from astropy.visualization import time_support
     from matplotlib.patches import Ellipse
 
-    # 1. Standard environment path setup
-    site_pkgs_path = '/opt/anaconda3/envs/radio/lib/python3.14/site-packages'
+    # 1. Check if we are running inside a WebAssembly/Pyodide browser environment
+    if "pyodide" in sys.modules:
+        # This is the exact location inside the browser's virtual file system
+        # Pyodide automatically dynamically pulls your package wheels here
+        py_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+        site_pkgs_path = f"/lib/python{py_version}/site-packages"
+        
+    else:
+        # 2. Fallback to your local Anaconda machine path for local editing
+        site_pkgs_path = '/path/to/anaconda/site-packages'
+    
+    # 3. Inject the path to fix the broken module's layout imports
     if site_pkgs_path not in sys.path:
         sys.path.insert(0, site_pkgs_path)
 

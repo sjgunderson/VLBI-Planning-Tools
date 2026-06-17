@@ -6,16 +6,6 @@ app = marimo.App(width="medium", auto_download=["ipynb"])
 
 @app.cell
 def _():
-    # /// script
-    # requires-python = ">=3.11"
-    # dependencies = [
-    #     "vlbiplanobs",
-    #     "marimo",
-    #     "numpy",
-    #     "matplotlib",
-    #     "astropy" 
-    # ]
-    # ///
     import marimo as mo
     import sys
     import astropy.units as u
